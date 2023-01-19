@@ -6,14 +6,15 @@ import java.util.Scanner;
 public class Ejercicio03 {
 
 	public static void main(String[] args) {
+		//Creamos la tabla y le damos un tamaño
 		int tabla[] = new int[10];
-		int aBorrar;
-		String opcion;
+		int aBorrar; //Variable para guardar los números a borrar
+		String opcion; //Variable para guardar la opción elegida del menú
 		
-		Scanner sc = new Scanner(System.in);
+		Scanner sc = new Scanner(System.in); //Escáner del programa
 		
-		for(int i = 0; i < tabla.length; i++) {
-			tabla[i] = (int)(Math.random()*100);
+		for(int i = 0; i < tabla.length; i++) { //Rellenamos la tabla con valores aleatorios
+			tabla[i] = (int)(Math.random()*10);
 		}
 		
 		//Se imprime al menos una vez
@@ -23,7 +24,7 @@ public class Ejercicio03 {
 					+ "A) Mostrar valores\n"
 					+ "B) Eliminar valor\n"
 					+ "C) Salir");
-				opcion = sc.next();
+				opcion = sc.next(); //Guardamos la elección en 'opcion'
 			//Según la opción introducida
 			switch(opcion) {
 			case "a": //opción 'a'
@@ -31,11 +32,11 @@ public class Ejercicio03 {
 				break;
 			case "b": //opción 'b'
 				System.out.print("Introduzca el valor que desea eliminar: ");
-				aBorrar = sc.nextInt();
-				for(int j = 0; j < tabla.length; j++) {
-					if(tabla[j] == aBorrar) {
-						System.arraycopy(tabla, j+1, tabla, j, (tabla.length - 1 - j));
-						tabla = Arrays.copyOf(tabla, tabla.length-1);
+				aBorrar = sc.nextInt(); //Guardamos el valor a eliminar en 'aBorrar'
+				for(int j = 0; j < tabla.length; j++) { //Buscamos el valor a borrar
+					if(tabla[j] == aBorrar) { //Una vez encontrado:
+						System.arraycopy(tabla, j+1, tabla, j, (tabla.length - 1 - j)); //Machacamos el número elegido
+						tabla = Arrays.copyOf(tabla, tabla.length-1); //Para deshacernos del 0 al final de la tabla
 					}
 				}
 				break;
@@ -47,7 +48,7 @@ public class Ejercicio03 {
 			}
 		} while(!opcion.equals("c")); //El bucle correrá mientras opción != c
 		
-		sc.close();
+		sc.close(); //Cerramos el escáner
 	}
 
 }
